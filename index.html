@@ -75,44 +75,59 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            /* Estilos del Preview: color de fondo y centrado de texto */
+            background-color: #d4c1a7; /* Color de papel envejecido para la previsualización */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 220px; /* Altura fija para la caja */
+            text-align: center;
         }
 
         .gallery-item:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: #bfae98; /* Un poco más oscuro al pasar el ratón */
         }
-
+        
+        /* Ocultar la etiqueta de imagen ya que el preview es una caja de color. 
+           La imagen solo se usa para el lightbox (aunque la dejamos para compatibilidad, la ignoraremos) */
         .gallery-item img {
-            width: 100%;
-            height: 220px;
+            display: none; 
+            width: 100%; /* Necesario para el atributo onerror si se usara */
+            height: 220px; /* Necesario para el atributo onerror si se usara */
             object-fit: cover;
-            display: block;
-            transition: transform 0.6s ease-in-out;
-            /* Asegurar que las imágenes de GitHub se carguen correctamente */
-            content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=); /* Fallback transparente */
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
         }
 
         .overlay {
             position: absolute;
-            bottom: 0;
+            top: 0; 
             left: 0;
             right: 0;
+            bottom: 0;
             background: rgba(74, 64, 54, 0.7); /* Marrón semitransparente */
             color: #fff;
             padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transform: translateY(100%);
             transition: transform 0.4s ease-out;
             text-align: center;
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1em;
+            font-size: 1.2em;
         }
 
         .gallery-item:hover .overlay {
             transform: translateY(0);
+        }
+        
+        /* Estilos para el texto de previsualización */
+        .gallery-item p {
+            color: #4a4036;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
         /* --- LIGHTBOX STYLES --- */
@@ -189,6 +204,8 @@
             .main-container { padding: 20px; margin: 20px auto; }
             h1.main-title { font-size: 2.5rem; }
             .journey-button { padding: 10px 20px; font-size: 12px; }
+            .gallery-item { height: 150px; } /* Altura más pequeña en móvil */
+            .gallery-item p { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -240,52 +257,109 @@
             
             <!-- --------------------------------------- -->
             <!-- ETAPA 3: GALERÍA DE FOTOS (REVELACIÓN) -->
+            <!-- Cuadrícula 4x3 (11 elementos llenan la primera fila y media de la segunda) -->
             <!-- --------------------------------------- -->
             <div id="stage-3" class="slide-stage hidden">
                 <h2 class="text-center text-4xl font-semibold mb-10 text-gray-800">El Tesoro Capturado para Ti</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Fila 1 -->
-                    <div class="gallery-item" data-title="La Guardiana de la Cima: El Poder de un Año Más">
-                        <!-- Imagen 1: IMG_3441.jpg -->
-                        <img src="IMG_3441.jpg" alt="Flor de la montaña 1" onerror="this.onerror=null; this.src='https://placehold.co/400x220/8c7b6c/fff?text=Cargando...';" loading="lazy">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    
+                    <!-- IMAGEN 1 (IMG_3441.jpg) -->
+                    <div class="gallery-item" data-title="La Guardiana de la Cima: El Poder de un Año Más" data-src="IMG_3441.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 1</p>
+                        <!-- La etiqueta img se mantiene oculta, solo se usa el data-src -->
+                        <img src="" alt="Flor de la montaña 1" loading="lazy">
                         <div class="overlay">
-                            <span class="caption">La Guardiana de la Cima</span>
+                            <span class="caption">Guardiana de la Cima</span>
                         </div>
                     </div>
-                    <div class="gallery-item" data-title="El Despertar: Tan Bella como la Reina de la Fiesta">
-                        <!-- Imagen 2: IMG_3444.jpg -->
-                        <img src="IMG_3444.jpg" alt="Flor de la montaña 2" onerror="this.onerror=null; this.src='https://placehold.co/400x220/6b5e51/fff?text=Cargando...';" loading="lazy">
+                    
+                    <!-- IMAGEN 2 (IMG_3444.jpg) -->
+                    <div class="gallery-item" data-title="El Despertar: Tan Bella como la Reina de la Fiesta" data-src="IMG_3444.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 2</p>
+                        <img src="" alt="Flor de la montaña 2" loading="lazy">
                         <div class="overlay">
                             <span class="caption">El Despertar</span>
                         </div>
                     </div>
-                    <div class="gallery-item" data-title="El Manto Púrpura: Un Deseo Hecho Realidad">
-                        <!-- Imagen 3: IMG_3447.jpg -->
-                        <img src="IMG_3447.jpg" alt="Flor de la montaña 3" onerror="this.onerror=null; this.src='https://placehold.co/400x220/a8947f/fff?text=Cargando...';" loading="lazy">
+                    
+                    <!-- IMAGEN 3 (IMG_3447.jpg) -->
+                    <div class="gallery-item" data-title="El Manto Púrpura: Un Deseo Hecho Realidad" data-src="IMG_3447.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 3</p>
+                        <img src="" alt="Flor de la montaña 3" loading="lazy">
                         <div class="overlay">
                             <span class="caption">El Manto Púrpura</span>
                         </div>
                     </div>
-                    <!-- Fila 2 -->
-                    <div class="gallery-item" data-title="Resistencia: Celebrando tu Fuerza">
-                        <!-- Imagen 4: IMG_3453.jpg -->
-                        <img src="IMG_3453.jpg" alt="Flor de la montaña 4" onerror="this.onerror=null; this.src='https://placehold.co/400x220/d4c1a7/4a4036?text=Cargando...';" loading="lazy">
+                    
+                    <!-- IMAGEN 4 (IMG_3453.jpg) -->
+                    <div class="gallery-item" data-title="Resistencia: Celebrando tu Fuerza" data-src="IMG_3453.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 4</p>
+                        <img src="" alt="Flor de la montaña 4" loading="lazy">
                         <div class="overlay">
                             <span class="caption">Resistencia</span>
                         </div>
                     </div>
-                    <div class="gallery-item" data-title="Detalle de Pétalos: Felicidades, Amor Mío">
-                        <!-- Imagen 5: IMG_3455.jpg -->
-                        <img src="IMG_3455.jpg" alt="Flor de la montaña 5" onerror="this.onerror=null; this.src='https://placehold.co/400x220/bfae98/4a4036?text=Cargando...';" loading="lazy">
+                    
+                    <!-- IMAGEN 5 (IMG_3455.jpg) -->
+                    <div class="gallery-item" data-title="Detalle de Pétalos: Felicidades, Amor Mío" data-src="IMG_3455.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 5</p>
+                        <img src="" alt="Flor de la montaña 5" loading="lazy">
                         <div class="overlay">
                             <span class="caption">Detalle de Pétalos</span>
                         </div>
                     </div>
-                     <div class="gallery-item" data-title="El Recuerdo: Un Año de Aventuras por Delante">
-                        <!-- Imagen 6: IMG_3462.jpg -->
-                        <img src="IMG_3462.jpg" alt="Flor de la montaña 6" onerror="this.onerror=null; this.src='https://placehold.co/400x220/9a8c7b/4a4036?text=Cargando...';" loading="lazy">
+                    
+                    <!-- IMAGEN 6 (IMG_3462.jpg) -->
+                     <div class="gallery-item" data-title="El Recuerdo: Un Año de Aventuras por Delante" data-src="IMG_3462.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 6</p>
+                        <img src="" alt="Flor de la montaña 6" loading="lazy">
                         <div class="overlay">
                             <span class="caption">El Recuerdo</span>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEN 7 (IMG_3466.jpg) -->
+                    <div class="gallery-item" data-title="La Semilla: Inicios y Nuevos Caminos" data-src="IMG_3466.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 7</p>
+                        <img src="" alt="Flor de la montaña 7" loading="lazy">
+                        <div class="overlay">
+                            <span class="caption">La Semilla</span>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEN 8 (IMG_3470.jpg) -->
+                    <div class="gallery-item" data-title="La Inspiración: Un Destello de Color" data-src="IMG_3470.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 8</p>
+                        <img src="" alt="Flor de la montaña 8" loading="lazy">
+                        <div class="overlay">
+                            <span class="caption">La Inspiración</span>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEN 9 (IMG_3472.jpg) -->
+                    <div class="gallery-item" data-title="El Horizonte: Mirando Hacia Adelante" data-src="IMG_3472.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 9</p>
+                        <img src="" alt="Flor de la montaña 9" loading="lazy">
+                        <div class="overlay">
+                            <span class="caption">El Horizonte</span>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEN 10 (IMG_3473.jpg) -->
+                    <div class="gallery-item" data-title="La Sabiduría: Los Colores de la Experiencia" data-src="IMG_3473.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 10</p>
+                        <img src="" alt="Flor de la montaña 10" loading="lazy">
+                        <div class="overlay">
+                            <span class="caption">La Sabiduría</span>
+                        </div>
+                    </div>
+
+                    <!-- IMAGEN 11 (IMG_3477.jpg) -->
+                    <div class="gallery-item" data-title="El Ramo Final: Tu Recuerdo Completo" data-src="IMG_3477.jpg">
+                        <p class="text-2xl font-bold text-[#4a4036] opacity-70">Flor 11</p>
+                        <img src="" alt="Flor de la montaña 11" loading="lazy">
+                        <div class="overlay">
+                            <span class="caption">El Ramo Final</span>
                         </div>
                     </div>
                 </div>
@@ -354,9 +428,11 @@
             // 1. Manejar el clic en los elementos de la galería
             galleryItems.forEach(item => {
                 item.addEventListener('click', () => {
-                    const imgSrc = item.querySelector('img').src;
+                    // Usamos data-src para obtener la URL de la imagen (el preview es solo color)
+                    const imgSrc = item.dataset.src; 
                     const imgAlt = item.dataset.title; 
 
+                    // Mostrar el lightbox
                     lightbox.style.display = 'flex';
                     lightboxImg.src = imgSrc;
                     lightboxCaption.textContent = imgAlt;
