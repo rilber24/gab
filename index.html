@@ -3,416 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Cumpleaños Gabriela ✨</title>
+    <title>Flores de la Montaña - Un Viaje</title>
+    <!-- Carga de Tailwind CSS para la base del diseño responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* --- ESTILOS VINTAGE --- */
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: #e6e2d3; /* Fondo de papel viejo */
+            color: #4a4036; /* Texto marrón oscuro */
+            line-height: 1.6;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fdfbf7; /* Papel blanco roto */
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(60, 50, 40, 0.15);
+            border: 1px solid #dcd9ce;
+            transition: all 0.5s ease;
+        }
+
+        /* Títulos de la Dedicatoria */
+        h1, h2, h3, .dedication-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: #4a4036;
+        }
+
+        h1.main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        /* --- BOTONES DE LA NARRATIVA --- */
+        .journey-button {
+            padding: 12px 30px;
+            background-color: #8c7b6c; /* Tono marrón suave */
+            color: #fff !important;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            border-radius: 50px;
+            border: none;
+            display: inline-flex;
             align-items: center;
-            overflow-x: hidden;
-            position: relative;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        .journey-button:hover {
+            background-color: #6b5e51; /* Tono más oscuro al pasar el ratón */
+            box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+            transform: translateY(-2px);
         }
 
-        .star {
-            position: absolute;
-            background: #ffd700;
-            border-radius: 50%;
-            animation: twinkle 3s infinite;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .container {
-            max-width: 800px;
-            width: 90%;
-            perspective: 1000px;
-        }
-
-        .card {
-            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-            border-radius: 30px;
-            padding: 60px 40px;
-            box-shadow: 0 30px 80px rgba(255, 215, 0, 0.3);
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            transform-style: preserve-3d;
-            animation: cardEntrance 1s ease-out;
+        /* --- ESTILOS DE LA GALERÍA FINAL --- */
+        .gallery-item {
             position: relative;
             overflow: hidden;
-        }
-
-        @keyframes cardEntrance {
-            from {
-                opacity: 0;
-                transform: translateY(50px) rotateX(-10deg);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) rotateX(0);
-            }
-        }
-
-        .glow-effect {
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-            animation: glowMove 6s ease-in-out infinite;
-        }
-
-        @keyframes glowMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, 30px); }
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .title {
-            font-size: 3.5em;
-            color: #ffd700;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            margin-bottom: 10px;
-            animation: titleFloat 3s ease-in-out infinite;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .name {
-            font-size: 4em;
-            color: #fff;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            margin: 20px 0;
-            animation: nameGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes nameGlow {
-            from { text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700; }
-            to { text-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700; }
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .message {
-            color: #e0e0e0;
-            font-size: 1.3em;
-            line-height: 1.8;
-            text-align: center;
-            margin: 30px 0;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.5s forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .highlight {
-            color: #ffd700;
-            font-weight: bold;
-            font-style: italic;
-        }
-
-        .interactive-section {
-            text-align: center;
-            margin: 40px 0;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1s forwards;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #1a1a1a;
-            border: none;
-            padding: 18px 45px;
-            font-size: 1.2em;
-            border-radius: 50px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 10px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        .gallery-item:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .hidden-message {
-            background: rgba(255, 215, 0, 0.1);
-            border-left: 4px solid #ffd700;
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 15px;
-            display: none;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .hidden-message.show {
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
             display: block;
+            transition: transform 0.6s ease-in-out;
         }
 
-        .hidden-message p {
-            color: #fff;
-            font-size: 1.2em;
-            line-height: 1.8;
-            margin: 15px 0;
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-        .hearts-container {
-            position: fixed;
-            top: 0;
+        .overlay {
+            position: absolute;
+            bottom: 0;
             left: 0;
+            right: 0;
+            background: rgba(74, 64, 54, 0.7); /* Marrón semitransparente */
+            color: #fff;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease-out;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1em;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        /* --- LIGHTBOX STYLES --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 1000;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
 
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            animation: floatHeart 4s ease-in-out;
-            opacity: 0;
+        .lightbox-content {
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 8px solid #fdfbf7;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            animation: zoomIn 0.4s ease-out;
+            border-radius: 4px;
         }
 
-        @keyframes floatHeart {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ffd700;
-            position: absolute;
-            animation: confettiFall 3s linear;
-            opacity: 0;
-        }
-
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        .footer {
+        .lightbox-caption {
             text-align: center;
-            margin-top: 50px;
-            color: #ffd700;
-            font-size: 1.5em;
-            font-style: italic;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.5s forwards;
+            color: #fdfbf7;
+            padding: 20px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6em;
+            max-width: 900px;
         }
 
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            color: #fdfbf7;
+            font-size: 50px;
+            font-weight: 300;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #d4c1a7;
+        }
+        
+        /* --- ANIMACIONES --- */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.7); } to { transform: scale(1); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .slide-stage {
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: translateY(20px);
+        }
+        .slide-stage.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .card {
-                padding: 40px 25px;
-            }
-            .title {
-                font-size: 2.5em;
-            }
-            .name {
-                font-size: 2.5em;
-                letter-spacing: 4px;
-            }
-            .message {
-                font-size: 1.1em;
-            }
-            .btn {
-                padding: 15px 30px;
-                font-size: 1em;
-            }
+            .main-container { padding: 20px; margin: 20px auto; }
+            h1.main-title { font-size: 2.5rem; }
+            .journey-button { padding: 10px 20px; font-size: 12px; }
         }
     </style>
 </head>
-<body>
-    <div class="stars" id="starsContainer"></div>
-    <div class="hearts-container" id="heartsContainer"></div>
+<body class="min-h-screen flex items-center justify-center">
 
-    <div class="container">
-        <div class="card">
-            <div class="glow-effect"></div>
+    <div class="main-container">
+        <!-- Título principal, visible siempre -->
+        <header class="text-center pb-8 border-b border-gray-200">
+            <p class="text-xl tracking-wider uppercase text-gray-500 font-light">Para celebrar tu día especial</p>
+            <h1 class="main-title">Tu Jardín Secreto de Cumpleaños</h1>
+        </header>
+
+        <main class="pt-8">
+            <!-- --------------------------------------- -->
+            <!-- ETAPA 1: INTRODUCCIÓN Y DEDICATORIA (CUMPLEAÑOS) -->
+            <!-- --------------------------------------- -->
+            <div id="stage-1" class="slide-stage active text-center max-w-2xl mx-auto">
+                <blockquote class="dedication-text text-3xl italic leading-relaxed text-gray-700">
+                    "Dicen que en los cumpleaños, las flores más bellas florecen solo para ti. ¡Feliz día!"
+                </blockquote>
+                <div class="my-6">
+                    <i class="fa-solid fa-gift text-5xl text-red-400 opacity-80"></i>
+                    <i class="fa-solid fa-cake-candles text-5xl text-yellow-500 opacity-80 ml-4"></i>
+                </div>
+                <button class="journey-button mt-10" data-next-stage="2">
+                    <i class="fa-solid fa-key"></i>
+                    Abrir el Regalo Especial
+                </button>
+            </div>
+
+            <!-- --------------------------------------- -->
+            <!-- ETAPA 2: EL ASCENSO (DIFICULTAD / LA BÚSQUEDA DEL TESORO) -->
+            <!-- --------------------------------------- -->
+            <div id="stage-2" class="slide-stage hidden text-center max-w-xl mx-auto">
+                <h2 class="text-4xl font-semibold mb-4 text-gray-800">El Tesoro Escondido</h2>
+                <p class="text-xl text-gray-600 mb-6">
+                    Quise traerte un ramo, pero estas flores son mágicas y solo se revelan a quienes encuentran el camino correcto: ¡el camino de la montaña!
+                </p>
+                <div class="my-6">
+                    <i class="fa-solid fa-map-location-dot text-5xl text-[#8c7b6c] opacity-70"></i>
+                    <i class="fa-solid fa-magnifying-glass text-5xl text-[#8c7b6c] opacity-70 ml-4"></i>
+                </div>
+                <p class="text-2xl font-bold italic text-[#8c7b6c]">¡Aquí están!</p>
+                <button class="journey-button mt-8" data-next-stage="3">
+                    <i class="fa-solid fa-bouquet"></i>
+                    Ver el Álbum de Flores
+                </button>
+            </div>
             
-            <div class="header">
-                <div class="title">✨ Feliz Cumpleaños ✨</div>
-                <div class="name">Gabriela</div>
+            <!-- --------------------------------------- -->
+            <!-- ETAPA 3: GALERÍA DE FOTOS (REVELACIÓN) -->
+            <!-- --------------------------------------- -->
+            <div id="stage-3" class="slide-stage hidden">
+                <h2 class="text-center text-4xl font-semibold mb-10 text-gray-800">El Tesoro Capturado para Ti</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Fila 1 -->
+                    <div class="gallery-item" data-title="La Guardiana de la Cima: El Poder de un Año Más">
+                        <!-- Placeholder Image 1 -->
+                        <img src="https://placehold.co/400x220/8c7b6c/fff?text=Flor+1" alt="Flor de la montaña 1">
+                        <div class="overlay">
+                            <span class="caption">La Guardiana de la Cima</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="El Despertar: Tan Bella como la Reina de la Fiesta">
+                        <!-- Placeholder Image 2 -->
+                        <img src="https://placehold.co/400x220/6b5e51/fff?text=Flor+2" alt="Flor de la montaña 2">
+                        <div class="overlay">
+                            <span class="caption">El Despertar</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="El Manto Púrpura: Un Deseo Hecho Realidad">
+                        <!-- Placeholder Image 3 -->
+                        <img src="https://placehold.co/400x220/a8947f/fff?text=Flor+3" alt="Flor de la montaña 3">
+                        <div class="overlay">
+                            <span class="caption">El Manto Púrpura</span>
+                        </div>
+                    </div>
+                    <!-- Fila 2 -->
+                    <div class="gallery-item" data-title="Resistencia: Celebrando tu Fuerza">
+                        <!-- Placeholder Image 4 -->
+                        <img src="https://placehold.co/400x220/d4c1a7/4a4036?text=Flor+4" alt="Flor de la montaña 4">
+                        <div class="overlay">
+                            <span class="caption">Resistencia</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-title="Detalle de Pétalos: Felicidades, Amor Mío">
+                        <!-- Placeholder Image 5 -->
+                        <img src="https://placehold.co/400x220/bfae98/4a4036?text=Flor+5" alt="Flor de la montaña 5">
+                        <div class="overlay">
+                            <span class="caption">Detalle de Pétalos</span>
+                        </div>
+                    </div>
+                     <div class="gallery-item" data-title="El Recuerdo: Un Año de Aventuras por Delante">
+                        <!-- Placeholder Image 6 -->
+                        <img src="https://placehold.co/400x220/9a8c7b/4a4036?text=Flor+6" alt="Flor de la montaña 6">
+                        <div class="overlay">
+                            <span class="caption">El Recuerdo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="text-center mt-10 text-lg italic text-gray-500">
+                    <p>¡Feliz Cumpleaños! Este jardín es para ti.</p>
+                </footer>
             </div>
+        </main>
+    </div>
 
-            <div class="content">
-                <div class="message">
-                    En este día tan especial, quiero que sepas que <span class="highlight">iluminas mi vida</span> como nadie más lo hace.
-                    <br><br>
-                    Cada momento a tu lado es un regalo, cada sonrisa tuya es mi razón favorita para sonreír.
-                    <br><br>
-                    Eres <span class="highlight">increíble</span>, <span class="highlight">hermosa</span> y la persona más especial en mi mundo.
-                </div>
-
-                <div class="interactive-section">
-                    <button class="btn" onclick="revealMessage()">💛 Mensaje Especial 💛</button>
-                    <button class="btn" onclick="celebrate()">🎉 Celebrar 🎉</button>
-                </div>
-
-                <div class="hidden-message" id="hiddenMessage">
-                    <p>Mi amor,</p>
-                    <p>Hoy celebro no solo tu cumpleaños, sino cada instante que me regalas con tu presencia. Eres mi persona favorita, mi cómplice, mi todo.</p>
-                    <p>Gracias por existir, por ser quien eres, por elegirme cada día. Que este nuevo año de tu vida esté lleno de sueños cumplidos, aventuras increíbles y todo el amor que mereces.</p>
-                    <p><span class="highlight">Te amo más de lo que las palabras pueden expresar.</span></p>
-                    <p>Que hoy y siempre seas tan feliz como me haces a mí.</p>
-                </div>
-
-                <div class="footer">
-                    Con todo mi amor, hoy y siempre 💛🖤
-                </div>
-            </div>
-        </div>
+    <!-- Lightbox (Modal) para mostrar la imagen grande -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-button">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
     <script>
-        // Crear estrellas
-        function createStars() {
-            const container = document.getElementById('starsContainer');
-            for (let i = 0; i < 50; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 3 + 's';
-                container.appendChild(star);
-            }
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const allStages = [
+                document.getElementById('stage-1'),
+                document.getElementById('stage-2'),
+                document.getElementById('stage-3')
+            ];
+            const buttons = document.querySelectorAll('.journey-button');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeButton = document.querySelector('.close-button');
+            const galleryItems = document.querySelectorAll('.gallery-item');
 
-        // Revelar mensaje oculto
-        function revealMessage() {
-            const message = document.getElementById('hiddenMessage');
-            message.classList.toggle('show');
-            createHearts();
-        }
+            let currentStage = 1;
 
-        // Crear corazones flotantes
-        function createHearts() {
-            const container = document.getElementById('heartsContainer');
-            const colors = ['#ffd700', '#ffed4e', '#fff'];
+            // --- NARRATIVA DE ETAPAS (Botones) ---
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const nextStageNum = parseInt(button.dataset.nextStage);
+                    if (nextStageNum > currentStage) {
+                        // Ocultar etapa actual con transición
+                        const currentStageElement = document.getElementById(`stage-${currentStage}`);
+                        if (currentStageElement) {
+                            currentStageElement.classList.remove('active');
+                            // Ocultar después de la transición
+                            setTimeout(() => {
+                                currentStageElement.classList.add('hidden');
+                            }, 1000); // 1 segundo de transición
+                        }
+
+                        // Mostrar nueva etapa con transición
+                        const nextStageElement = document.getElementById(`stage-${nextStageNum}`);
+                        if (nextStageElement) {
+                            // Mostrar inmediatamente (sin opacidad) y aplicar 'active' después de un breve retraso
+                            nextStageElement.classList.remove('hidden');
+                            setTimeout(() => {
+                                nextStageElement.classList.add('active');
+                            }, 10);
+                        }
+                        currentStage = nextStageNum;
+                    }
+                });
+            });
+
+            // --- FUNCIONALIDAD LIGHTBOX (Galería) ---
             
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '💛';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-                    heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-                    container.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 100);
-            }
-        }
+            // 1. Manejar el clic en los elementos de la galería
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.querySelector('img').src;
+                    const imgAlt = item.dataset.title; 
 
-        // Celebración con confeti
-        function celebrate() {
-            const container = document.getElementById('heartsContainer');
-            const colors = ['#ffd700', '#ffed4e', '#fff', '#000'];
-            
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.style.left = Math.random() * 100 + '%';
-                    confetti.style.top = '-10px';
-                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.width = Math.random() * 10 + 5 + 'px';
-                    confetti.style.height = confetti.style.width;
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
-                    container.appendChild(confetti);
-                    
-                    setTimeout(() => confetti.remove(), 3000);
-                }, i * 30);
-            }
-            
-            createHearts();
-        }
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = imgSrc;
+                    lightboxCaption.textContent = imgAlt;
+                });
+            });
 
-        // Inicializar
-        createStars();
-        
-        // Celebración automática al cargar
-        setTimeout(() => {
-            createHearts();
-        }, 2000);
+            // 2. Cerrar el lightbox con el botón X
+            closeButton.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            // 3. Cerrar el lightbox haciendo clic fuera de la imagen
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+            // 4. Cerrar el lightbox con la tecla ESC
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+        });
     </script>
 </body>
 </html>
